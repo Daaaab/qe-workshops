@@ -1,4 +1,5 @@
-qe2017
+#qe2017
+
 This repository contains documents and code used throughout workshops conducted at Quality Excites 2017 conference. (https://qualityexcites.pl/en/)
 
 This project contains samples how to write automated tests for Android application using Espresso.
