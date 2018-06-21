@@ -44,17 +44,6 @@ public class Exercise1 {
         Espresso.onView(
                 ViewMatchers.withId(id.registerButton))
                 .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newUsernameEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        //TODO 4,5
-        Espresso.closeSoftKeyboard();
-        Espresso.pressBack();
-        Espresso.onView(
-                ViewMatchers.withId(id.usernameEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     /* TODO TASK 2
@@ -70,32 +59,7 @@ public class Exercise1 {
     */
     @Test
     public void registerUser() {
-        //TODO 1,2
-        Espresso.onView(
-                ViewMatchers.withId(id.registerButton))
-                .perform(ViewActions.click());
 
-        Espresso.onView(
-                ViewMatchers.withId(id.newUsernameEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        //TODO 3,4,5
-        Espresso.onView(
-                ViewMatchers.withId(id.newUsernameEditText))
-                .perform(ViewActions.typeText("user"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newPasswordEditText))
-                .perform(ViewActions.typeText("pass"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.registerButton))
-                .perform(ViewActions.click());
-
-        //TODO 6
-        Espresso.onView(
-                ViewMatchers.withId(pl.lizardproject.qe2018.R.id.fabAdd))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     /* TODO TASK 3
@@ -115,54 +79,7 @@ public class Exercise1 {
      */
     @Test
     public void addItem() {
-        //TODO 1,2
-        Espresso.onView(
-                ViewMatchers.withId(id.registerButton))
-                .perform(ViewActions.click());
 
-        Espresso.onView(
-                ViewMatchers.withId(id.newUsernameEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        //TODO 3,4,5,6
-        Espresso.onView(
-                ViewMatchers.withId(id.newUsernameEditText))
-                .perform(ViewActions.typeText("user"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newPasswordEditText))
-                .perform(ViewActions.typeText("pass"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.registerButton))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.fabAdd))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        //TODO 7,8
-        Espresso.onView(
-                ViewMatchers.withId(id.fabAdd))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newItemEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        // TODO 9,10
-       Espresso.onView(
-               ViewMatchers.withId(id.newItemEditText))
-               .perform(ViewActions.typeText("ziemniaki"));
-
-       Espresso.onView(
-               ViewMatchers.withId(id.fabSave))
-               .perform(ViewActions.click());
-
-        // TODO 11
-        Espresso.onView(
-                ViewMatchers.withId(id.text))
-                .check(ViewAssertions.matches(ViewMatchers.withText("ziemniaki")));
     }
 
     /* TODO TASK 4
@@ -189,93 +106,6 @@ public class Exercise1 {
      */
     @Test
     public void addTheSameItemNameTwice() {
-        //TODO 1,2
-        Espresso.onView(
-                ViewMatchers.withId(id.registerButton))
-                .perform(ViewActions.click());
 
-        Espresso.onView(
-                ViewMatchers.withId(id.newUsernameEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        //TODO 3,4,5,6
-        Espresso.onView(
-                ViewMatchers.withId(id.newUsernameEditText))
-                .perform(ViewActions.typeText("user"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newPasswordEditText))
-                .perform(ViewActions.typeText("pass"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.registerButton))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.fabAdd))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        //TODO 7,8,9,10,11,12
-        Espresso.onView(
-                ViewMatchers.withId(id.fabAdd))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newItemEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newItemEditText))
-                .perform(ViewActions.typeText("buraki"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.category_spinner))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withText("other"))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.fabSave))
-                .perform(ViewActions.click());
-
-        //TODO 13,14,15,16,17,18
-        Espresso.onView(
-                ViewMatchers.withId(id.fabAdd))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newItemEditText))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.newItemEditText))
-                .perform(ViewActions.typeText("buraki"));
-
-        Espresso.onView(
-                ViewMatchers.withId(id.priority_spinner))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withText("critical"))
-                .perform(ViewActions.click());
-
-        Espresso.onView(
-                ViewMatchers.withId(id.fabSave))
-                .perform(ViewActions.click());
-
-        //TODO 19
-        Espresso.onView(allOf(
-                ViewMatchers.withId(id.text),
-                ViewMatchers.withText("buraki"),
-                ViewMatchers.hasSibling(ViewMatchers.withText("Category: other"))))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        Espresso.onView(allOf(
-                ViewMatchers.withId(id.text),
-                ViewMatchers.withText("buraki"),
-                ViewMatchers.hasSibling(ViewMatchers.withText("Priority: critical"))))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 }

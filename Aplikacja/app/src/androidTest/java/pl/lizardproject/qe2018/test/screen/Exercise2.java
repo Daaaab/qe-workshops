@@ -57,9 +57,7 @@ public class Exercise2 {
     */
     @Test
     public void openRegisterScreen() {
-        new LoginPageObject()
-                .openRegisterScreen()
-                .validate();
+
     }
 
     /* TODO TASK 3
@@ -72,14 +70,7 @@ public class Exercise2 {
     */
     @Test
     public void login() {
-        String username = "user";
-        String password = "password";
 
-        testDataHelper.addUserToDatabase(username, password);
-
-        new LoginPageObject()
-                .login(username, password)
-                .validate();
     }
 
     ////////////////// For volunteers //////////////////
@@ -93,12 +84,7 @@ public class Exercise2 {
     */
     @Test
     public void loginError() {
-        String username = "user";
-        String password = "password";
 
-        new LoginPageObject()
-                .loginWithError(username, password)
-                .validateError();
     }
 
     /* TODO TASK 5
@@ -110,13 +96,6 @@ public class Exercise2 {
     */
     @Test
     public void loginWithWrongPasswordError() {
-        String username = "user";
-        String password = "password";
 
-        testDataHelper.addUserToDatabase(username, password);
-
-        new LoginPageObject()
-                .loginWithError(username, "wrong password")
-                .validateError();
     }
 }

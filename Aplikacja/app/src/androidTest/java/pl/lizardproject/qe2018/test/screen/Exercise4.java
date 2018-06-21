@@ -54,8 +54,6 @@ public class Exercise4 {
     public void validateScreen() {
         activityTestRule.launchActivity(null);
 
-        new ItemListPageObject()
-                .validate();
     }
 
     /* TODO TASK 2
@@ -68,9 +66,6 @@ public class Exercise4 {
     public void openAddItemScreen() {
         activityTestRule.launchActivity(null);
 
-        new ItemListPageObject()
-                .openAddItemScreen()
-                .validate("", Category.FRUITS, Priority.NORMAL);
     }
 
     /* TODO TASK 3
@@ -82,17 +77,7 @@ public class Exercise4 {
    */
     @Test
     public void openEditItemScreen() {
-        String itemName = "new item";
-        Category itemCategory = Category.FRUITS;
-        Priority itemPriority = Priority.NORMAL;
-        boolean isChecked = false;
-        testDataHelper.addItemToDatabase(itemName, itemCategory, itemPriority, isChecked, dbUser);
 
-        activityTestRule.launchActivity(null);
-
-        new ItemListPageObject()
-                .clickOnItem(itemName)
-                .validate(itemName, itemCategory, itemPriority);
     }
 
     /* TODO TASK 4
@@ -104,17 +89,7 @@ public class Exercise4 {
     */
     @Test
     public void removeItem() {
-        String itemName = "new item";
-        Category itemCategory = Category.FRUITS;
-        Priority itemPriority = Priority.NORMAL;
-        boolean isChecked = false;
-        testDataHelper.addItemToDatabase(itemName, itemCategory, itemPriority, isChecked, dbUser);
 
-        activityTestRule.launchActivity(null);
-
-        new ItemListPageObject()
-                .removeItem(itemName)
-                .validateItemNotExists(itemName, itemCategory, itemPriority, isChecked);
     }
 
     /* TODO TASK 5
@@ -126,16 +101,6 @@ public class Exercise4 {
     */
     @Test
     public void checkItem() {
-        String itemName = "new item";
-        Category itemCategory = Category.FRUITS;
-        Priority itemPriority = Priority.NORMAL;
-        boolean isChecked = false;
-        testDataHelper.addItemToDatabase(itemName, itemCategory, itemPriority, isChecked, dbUser);
 
-        activityTestRule.launchActivity(null);
-
-        new ItemListPageObject()
-                .checkItem(itemName)
-                .validateItemExists(itemName, itemCategory, itemPriority, !isChecked);
     }
 }
