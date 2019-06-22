@@ -1,4 +1,17 @@
 <resources>
-    <string name="app_name">Mobile Automation Workshop</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">QE - Mobile Automation Workshops</string>
+    <string name="priority">Priority: %s</string>
+    <string name="category">Category: %s</string>
+    <string name="nameHint">Name</string>
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+    <string name="categoryTitle">Category</string>
+    <string name="priorityTitle">Priority</string>
+    <string name="editItemErrorEmptyName">Fill the name field!</string>
+    <string name="loginError">Wrong username or password</string>
+    <string name="registerErrorUserExists">User already exists</string>
+    <string name="registerError">Username and password shouldn\'t be blank</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="logout">Logout</string>
 </resources>
