@@ -41,11 +41,12 @@ class ItemViewModel(item: Item, private val databaseFacade: AppDatabase, private
                 },{err ->
                     Log.e("DB_MSG", err.message)
                 })
-
         }
     }
 
     fun onClickCommand(ignored: View) {
-//        appNavigator.openEditItemActivity(item.get().id)
+        item.get()?.let {
+            appNavigator.openEditItemActivity(it.id)
+        }
     }
 }

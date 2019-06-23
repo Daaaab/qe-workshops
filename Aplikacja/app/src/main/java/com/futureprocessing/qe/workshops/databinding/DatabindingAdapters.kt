@@ -1,9 +1,7 @@
 package com.futureprocessing.qe.workshops.databinding
 
-import androidx.databinding.BindingAdapter
-import androidx.databinding.BindingMethod
-import androidx.databinding.BindingMethods
-import androidx.databinding.ObservableArrayList
+import android.widget.Spinner
+import androidx.databinding.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +20,9 @@ fun bindRecyclerViewItems(view: RecyclerView, list: ObservableArrayList<Item>) {
         view.adapter?.notifyDataSetChanged()
     }
 }
+
+@InverseBindingMethods(InverseBindingMethod(type = Spinner::class, attribute = "android:selectedItemPosition"))
+class SpinnerBindingAdapters
 
 @BindingMethods(value = [BindingMethod(type = TextInputLayout::class, attribute = "app:errorText", method = "setError")])
 class TextInputLayoutBindingAdapters

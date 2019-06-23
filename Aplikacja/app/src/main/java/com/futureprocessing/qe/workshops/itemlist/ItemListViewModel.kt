@@ -21,10 +21,10 @@ class ItemListViewModel(databaseFacade: AppDatabase, private val userSession: Us
             .subscribe({ values ->
                 items.clear()
                 items.addAll(values)
-            }, { err -> Log.e("TAG", err.message, err) })
+            }, { err -> Log.e("DB_MSG", err.message, err) })
 
     fun addItemCommand(ignored: View) {
-       // appNavigator.openEditItemActivity()
+       appNavigator.openEditItemActivity()
     }
 
     fun logout() {

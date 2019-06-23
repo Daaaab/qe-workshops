@@ -44,6 +44,11 @@ dependencies {
 
     implementation 'io.reactivex:rxjava:1.3.0'
 
+    implementation 'com.f2prateek.dart:dart:2.0.2'
+    kapt 'com.f2prateek.dart:dart-processor:2.0.2'
+    implementation 'com.f2prateek.dart:henson:2.0.2'
+    kapt 'com.f2prateek.dart:henson-processor:2.0.2'
+
     implementation "androidx.room:room-runtime:2.1.0"
     kapt "androidx.room:room-compiler:2.1.0"
     implementation "androidx.room:room-ktx:2.1.0"
