@@ -60,7 +60,7 @@ class LoginViewModel(
                         showSpinner.set(false)
                         errorText.set(null)
                         performUser(it.toAppModel())
-                        Log.d("DB_MSG", "User logged in: ${it.login}")
+                        Log.d("DB_MSG", "User logged in: ${it.id} - ${it.login}")
                     },
                     {
                         showSpinner.set(false)

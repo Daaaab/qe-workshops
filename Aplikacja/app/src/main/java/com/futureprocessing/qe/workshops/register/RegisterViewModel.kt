@@ -45,12 +45,15 @@ class RegisterViewModel(
                     showSpinner.set(true)
                     databaseFacade.userDao().insert(it)
                 }
+                .flatMap {
+                    databaseFacade.userDao().findByName(it.login!!)
+                }
                 .subscribe(
                     {
                         showSpinner.set(false)
                         errorText.set(null)
                         performUser(it.toAppModel())
-                        Log.d("DB_MSG", "User created: ${it.login}")
+                        Log.d("DB_MSG", "User created: ${it.id} - ${it.login}")
                     },
                     {
                         showSpinner.set(false)

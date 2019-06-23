@@ -34,7 +34,7 @@ class EditItemViewModel(private val itemId: Int?, private val databaseFacade: Ap
                 newItemCategoryPosition.set(it.category.ordinal)
                 newItemPriorityPosition.set(it.priority.ordinal)
             }, {err->
-                Log.e("DB_MSG", err.message)
+                Log.e("DB_MSG_A", err.message)
             })
 
     val categories = Category.values().map { it.toString().toLowerCase() }
@@ -52,12 +52,15 @@ class EditItemViewModel(private val itemId: Int?, private val databaseFacade: Ap
                 val sub = Single.just(dbItem)
                     .observeOn(Schedulers.io())
                     .subscribeOn(Schedulers.io())
-                    .subscribe({entity ->
+                    .doOnSuccess {entity ->
+                        Log.e("DB_MSG", "Insert ${entity.name} for user: ${userSession.user?.id} - ${userSession.user?.login}")
                         databaseFacade.itemDao().insert(entity)
+                    }
+                    .subscribe({
                         appNavigator.openItemListActivity()
                     },{err->
                         messenger.showMessage(view, err.message!!)
-                        Log.e("DB_MSG", err.message)
+                        Log.e("DB_MSG_B", err.message)
                     })
 
                 disposable.add(sub)
