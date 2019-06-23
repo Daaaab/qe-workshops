@@ -6,15 +6,14 @@ import androidx.databinding.ObservableField
 import com.futureprocessing.qe.workshops.R
 import com.futureprocessing.qe.workshops.common.AppNavigator
 import com.futureprocessing.qe.workshops.database.AppDatabase
-import com.futureprocessing.qe.workshops.database.model.UserEntity
 import com.futureprocessing.qe.workshops.database.toAppModel
 import com.futureprocessing.qe.workshops.database.toDbModel
 import com.futureprocessing.qe.workshops.model.User
 import com.futureprocessing.qe.workshops.model.UserSession
+import io.reactivex.Single
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
-import rx.Single
-import rx.Subscription
-import rx.schedulers.Schedulers
 
 class RegisterViewModel(
     private val databaseFacade: AppDatabase,
@@ -27,7 +26,7 @@ class RegisterViewModel(
     val errorText = ObservableField<String>("")
     val showSpinner = ObservableField(false)
 
-    private var subscription: Subscription? = null
+    private var subscription: Disposable? = null
 
     fun registerCommand(view: View) {
 
@@ -58,16 +57,15 @@ class RegisterViewModel(
                         errorText.set(view.context.getString(R.string.registerErrorUserExists))
                         Log.e("DB_MSG", it.message)
                     })
-
-
         }
     }
 
     fun dispose() {
-        subscription?.unsubscribe()
+        subscription?.dispose()
     }
 
     private fun performUser(user: User) {
         userSession.start(user)
+        appNavigator.openItemListActivity()
     }
 }

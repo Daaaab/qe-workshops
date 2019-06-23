@@ -12,10 +12,15 @@ import com.futureprocessing.qe.workshops.databinding.ActivityLoginBinding
 class LoginActivity : AppCompatActivity() {
 
     private val myApplication: MyApplication by lazy { application as MyApplication }
-    private val viewModel by lazy { LoginViewModel(AppNavigator(this)) }
+    private val viewModel by lazy { LoginViewModel(myApplication.db, myApplication.session, AppNavigator(this)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login).viewModel = viewModel
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.dispose()
     }
 }
