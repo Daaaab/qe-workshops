@@ -20,53 +20,49 @@ import static com.futureprocessing.qe.workshops.util.action.CustomViewActions.cl
 import static org.hamcrest.core.AllOf.allOf;
 
 public class ItemListPageObject {
-    private final ViewInteraction itemList;
-    private final ViewInteraction addItemFab;
+//    private final ViewInteraction itemList;
+//    private final ViewInteraction addItemFab;
 
     public ItemListPageObject() {
-        itemList = onView(withId(R.id.recyclerViewList));
-        addItemFab = onView(withId(R.id.fabAdd));
+
     }
 
     public EditItemPageObject openAddItemScreen() {
-        addItemFab.perform(click());
 
         return new EditItemPageObject();
     }
 
     public EditItemPageObject clickOnItem(String itemName) {
-        itemList.perform(RecyclerViewActions.actionOnItem(withChild(withText(itemName)), click()));
+        // new methods: withChild, RecyclerViewActions.actionOnItem
 
         return new EditItemPageObject();
     }
 
     public ItemListPageObject removeItem(String itemName) {
-        itemList.perform(RecyclerViewActions.actionOnItem(withChild(withText(itemName)), clickOnChild(R.id.deleteButton)));
+        // add code to CustomViewActions - clickOnChild
 
         return this;
     }
 
     public ItemListPageObject checkItem(String itemName) {
-        itemList.perform(RecyclerViewActions.actionOnItem(withChild(withText(itemName)), clickOnChild(R.id.checkbox)));
 
         return this;
     }
 
     public ItemListPageObject validateItemExists(String name, Category category, Priority priority, boolean isChecked) {
-        getItemView(name, category, priority, isChecked).check(matches(isDisplayed()));
+        // use getItemView method
 
         return this;
     }
 
     public ItemListPageObject validateItemNotExists(String name, Category category, Priority priority, boolean isChecked) {
-        getItemView(name, category, priority, isChecked).check(doesNotExist());
+        // use getItemView method
+        // new method: doesNotExist
 
         return this;
     }
 
     public ItemListPageObject validate() {
-        itemList.check(matches(isDisplayed()));
-        addItemFab.check(matches(isDisplayed()));
 
         return this;
     }

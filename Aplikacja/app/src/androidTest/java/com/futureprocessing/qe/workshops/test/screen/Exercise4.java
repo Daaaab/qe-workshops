@@ -7,10 +7,7 @@ import com.futureprocessing.qe.workshops.MyApplication;
 import com.futureprocessing.qe.workshops.database.AppDatabase;
 import com.futureprocessing.qe.workshops.database.model.UserEntity;
 import com.futureprocessing.qe.workshops.itemlist.ItemListActivity;
-import com.futureprocessing.qe.workshops.model.Category;
-import com.futureprocessing.qe.workshops.model.Priority;
 import com.futureprocessing.qe.workshops.model.UserSession;
-import com.futureprocessing.qe.workshops.pageobject.ItemListPageObject;
 import com.futureprocessing.qe.workshops.util.TestDataHelper;
 import org.junit.After;
 import org.junit.Before;
@@ -53,13 +50,11 @@ public class Exercise4{
      *
      * 1. Validate if the screen is opened
      *
-    */
+     */
     @Test
     public void validateScreen() {
         activityTestRule.launchActivity(null);
 
-        new ItemListPageObject()
-                .validate();
     }
 
     /* TODO TASK 2
@@ -67,36 +62,23 @@ public class Exercise4{
      * 1. Click on add button
      * 2. Validate if the screen is opened
      *
-    */
+     */
     @Test
     public void openAddItemScreen() {
         activityTestRule.launchActivity(null);
 
-        new ItemListPageObject()
-                .openAddItemScreen()
-                .validate("", Category.FRUITS, Priority.NORMAL);
     }
 
     /* TODO TASK 3
-    *
-    * 1. Add item to database - use addItemToDatabase method from testDataHelper
-    * 2. Click on item
-    * 3. Validate if the screen is opened
-    *
-   */
+     *
+     * 1. Add item to database - use addItemToDatabase method from testDataHelper
+     * 2. Click on item
+     * 3. Validate if the screen is opened
+     *
+     */
     @Test
     public void openEditItemScreen() {
-        String itemName = "new item";
-        Category itemCategory = Category.FRUITS;
-        Priority itemPriority = Priority.NORMAL;
-        boolean isChecked = false;
-        testDataHelper.addItemToDatabase(itemName, itemCategory, itemPriority, isChecked, dbUser);
 
-        activityTestRule.launchActivity(null);
-
-        new ItemListPageObject()
-                .clickOnItem(itemName)
-                .validate(itemName, itemCategory, itemPriority);
     }
 
     /* TODO TASK 4
@@ -105,20 +87,10 @@ public class Exercise4{
      * 2. Remove item
      * 3. Validate if the item is removed
      *
-    */
+     */
     @Test
     public void removeItem() {
-        String itemName = "new item";
-        Category itemCategory = Category.FRUITS;
-        Priority itemPriority = Priority.NORMAL;
-        boolean isChecked = false;
-        testDataHelper.addItemToDatabase(itemName, itemCategory, itemPriority, isChecked, dbUser);
 
-        activityTestRule.launchActivity(null);
-
-        new ItemListPageObject()
-                .removeItem(itemName)
-                .validateItemNotExists(itemName, itemCategory, itemPriority, isChecked);
     }
 
     /* TODO TASK 5
@@ -127,19 +99,9 @@ public class Exercise4{
      * 2. Check the item
      * 3. Validate if the item is checked
      *
-    */
+     */
     @Test
     public void checkItem() {
-        String itemName = "new item";
-        Category itemCategory = Category.FRUITS;
-        Priority itemPriority = Priority.NORMAL;
-        boolean isChecked = false;
-        testDataHelper.addItemToDatabase(itemName, itemCategory, itemPriority, isChecked, dbUser);
 
-        activityTestRule.launchActivity(null);
-
-        new ItemListPageObject()
-                .checkItem(itemName)
-                .validateItemExists(itemName, itemCategory, itemPriority, !isChecked);
     }
 }

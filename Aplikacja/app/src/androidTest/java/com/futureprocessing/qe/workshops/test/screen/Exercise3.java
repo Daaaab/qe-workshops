@@ -3,9 +3,7 @@ package com.futureprocessing.qe.workshops.test.screen;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import com.futureprocessing.qe.workshops.MyApplication;
-import com.futureprocessing.qe.workshops.R;
 import com.futureprocessing.qe.workshops.database.AppDatabase;
-import com.futureprocessing.qe.workshops.pageobject.RegisterPageObject;
 import com.futureprocessing.qe.workshops.register.RegisterActivity;
 import com.futureprocessing.qe.workshops.util.TestDataHelper;
 import org.junit.After;
@@ -38,11 +36,10 @@ public class Exercise3 {
      *
      * 1. Validate if the screen is opened
      *
-    */
+     */
     @Test
     public void validateScreen() {
-        new RegisterPageObject()
-                .validate();
+
     }
 
     /* TODO TASK 2
@@ -50,15 +47,10 @@ public class Exercise3 {
      * 1. Register user
      * 2. Validate if the screen is opened
      *
-    */
+     */
     @Test
     public void createUser() {
-        String username = "user";
-        String password = "password";
 
-        new RegisterPageObject()
-                .createUser(username, password)
-                .validate();
     }
 
     ////////////////// For volunteers //////////////////
@@ -69,15 +61,10 @@ public class Exercise3 {
      * 2, Try to register with empty edit texts
      * 3. Validate if the error is displayed
      *
-    */
+     */
     @Test
     public void registerError() {
-        String username = "";
-        String password = "";
 
-        new RegisterPageObject()
-                .createUserWithError(username, password)
-                .validateError(R.string.registerError);
     }
 
     /* TODO TASK 4
@@ -86,16 +73,9 @@ public class Exercise3 {
      * 2, Try to register with existing user
      * 3. Validate if the error is displayed
      *
-    */
+     */
     @Test
     public void registerWithExistingUserError() {
-        String username = "user";
-        String password = "password";
 
-        testDataHelper.addUserToDatabase(username, password);
-
-        new RegisterPageObject()
-                .createUserWithError(username, password)
-                .validateError(R.string.registerErrorUserExists);
     }
 }

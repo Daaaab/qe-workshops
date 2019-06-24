@@ -15,38 +15,27 @@ public class RegisterPageObject {
 
     private static final int INPUT_TYPE = 129;
 
-    private final ViewInteraction usernameEditText;
-    private final ViewInteraction passwordEditText;
-    private final ViewInteraction registerButton;
+//    private final ViewInteraction usernameEditText;
+//    private final ViewInteraction passwordEditText;
+//    private final ViewInteraction registerButton;
 
     public RegisterPageObject() {
-        usernameEditText = onView(withId(R.id.newUsernameEditText));
-        passwordEditText = onView(withId(R.id.newPasswordEditText));
-        registerButton = onView(withId(R.id.registerButton));
+
     }
 
     public ItemListPageObject createUser(String username, String password) {
-        usernameEditText.perform(replaceText(username));
-        passwordEditText.perform(replaceText(password));
-
-        registerButton.perform(click());
 
         return new ItemListPageObject();
     }
 
 
     public RegisterPageObject validate() {
-        usernameEditText.check(matches(isDisplayed()));
-        passwordEditText.check(matches(isDisplayed()));
-        passwordEditText.check(matches(withInputType(INPUT_TYPE)));
-        registerButton.check(matches(isDisplayed()));
 
         return this;
     }
 
     public LoginPageObject goBack() {
-        Espresso.closeSoftKeyboard();
-        Espresso.pressBack();
+        // remember to close keyboard
 
         return new LoginPageObject();
     }
@@ -54,13 +43,11 @@ public class RegisterPageObject {
     ////////////////// For volunteers //////////////////
 
     public RegisterPageObject createUserWithError(String username, String password) {
-        createUser(username, password);
 
         return this;
     }
 
     public RegisterPageObject validateError(@StringRes int errorTextId) {
-        onView(withText(errorTextId)).check(matches(isDisplayed()));
 
         return this;
     }

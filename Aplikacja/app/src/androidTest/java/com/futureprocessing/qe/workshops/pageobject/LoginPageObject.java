@@ -15,39 +15,29 @@ public class LoginPageObject {
     private static final int INPUT_TYPE = 129;
 
     private final ViewInteraction usernameEditText;
-    private final ViewInteraction passwordEditText;
-    private final ViewInteraction loginButton;
-    private final ViewInteraction registerButton;
+//    private final ViewInteraction passwordEditText;
+//    private final ViewInteraction loginButton;
+//    private final ViewInteraction registerButton;
 
     public LoginPageObject() {
         usernameEditText = onView(withId(R.id.usernameEditText));
-        passwordEditText = onView(withId(R.id.passwordEditText));
-        loginButton = onView(withId(R.id.loginButton));
-        registerButton = onView(withId(R.id.registerButton));
+        // initialize all views
+
     }
 
     public ItemListPageObject login(String username, String password) {
-        usernameEditText.perform(replaceText(username));
-        passwordEditText.perform(replaceText(password));
-
-        loginButton.perform(click());
 
         return new ItemListPageObject();
     }
 
     public RegisterPageObject openRegisterScreen() {
-        registerButton.perform(click());
 
         return new RegisterPageObject();
     }
 
 
     public LoginPageObject validate() {
-        usernameEditText.check(matches(isDisplayed()));
-        passwordEditText.check(matches(isDisplayed()));
-        passwordEditText.check(matches(withInputType(INPUT_TYPE)));
-        loginButton.check(matches(isDisplayed()));
-        registerButton.check(matches(isDisplayed()));
+        // new method: withInputType
 
         return this;
     }
@@ -55,13 +45,13 @@ public class LoginPageObject {
     ////////////////// For volunteers //////////////////
 
     public LoginPageObject loginWithError(String username, String password) {
-        login(username, password);
+        // reuse existing method
 
         return this;
     }
 
     public LoginPageObject validateError() {
-        onView(withText(R.string.loginError)).check(matches(isDisplayed()));
+        // new method: withText
 
         return this;
     }

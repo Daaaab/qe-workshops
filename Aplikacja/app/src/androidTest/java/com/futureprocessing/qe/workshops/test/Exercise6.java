@@ -4,9 +4,6 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import com.futureprocessing.qe.workshops.MyApplication;
 import com.futureprocessing.qe.workshops.login.LoginActivity;
-import com.futureprocessing.qe.workshops.model.Category;
-import com.futureprocessing.qe.workshops.model.Priority;
-import com.futureprocessing.qe.workshops.pageobject.LoginPageObject;
 import com.futureprocessing.qe.workshops.util.TestDataHelper;
 import org.junit.After;
 import org.junit.Before;
@@ -40,14 +37,10 @@ public class Exercise6 {
      * 3. Move to the previous screen
      * 4. Validate if the screen is opened
      *
-    */
+     */
     @Test
     public void openRegisterScreen() {
-        new LoginPageObject()
-                .openRegisterScreen()
-                .validate()
-                .goBack()
-                .validate();
+
     }
 
     /* TODO TASK 2
@@ -57,14 +50,10 @@ public class Exercise6 {
      * 3. Create user
      * 4. Validate if the item list screen is opened
      *
-    */
+     */
     @Test
     public void registerUser() {
-        new LoginPageObject()
-                .openRegisterScreen()
-                .validate()
-                .createUser("user", "pass")
-                .validate();
+
     }
 
     /* TODO TASK 3
@@ -81,15 +70,7 @@ public class Exercise6 {
      */
     @Test
     public void addItem() {
-        new LoginPageObject()
-                .openRegisterScreen()
-                .validate()
-                .createUser("user", "pass")
-                .validate()
-                .openAddItemScreen()
-                .validate("", Category.FRUITS, Priority.NORMAL)
-                .saveItem("item", Category.AGD, Priority.CRITICAL)
-                .validateItemExists("item", Category.AGD, Priority.CRITICAL, false);
+
     }
 
     /* TODO TASK 4
@@ -108,18 +89,6 @@ public class Exercise6 {
      */
     @Test
     public void addTheSameItemNameTwice() {
-        new LoginPageObject()
-                .openRegisterScreen()
-                .validate()
-                .createUser("user", "pass")
-                .validate()
-                .openAddItemScreen()
-                .validate("", Category.FRUITS, Priority.NORMAL)
-                .saveItem("item", Category.AGD, Priority.CRITICAL)
-                .openAddItemScreen()
-                .validate("", Category.FRUITS, Priority.NORMAL)
-                .saveItem("item2", Category.DAIRY, Priority.MINOR)
-                .validateItemExists("item", Category.AGD, Priority.CRITICAL, false)
-                .validateItemExists("item2", Category.DAIRY, Priority.MINOR, false);
+
     }
 }
