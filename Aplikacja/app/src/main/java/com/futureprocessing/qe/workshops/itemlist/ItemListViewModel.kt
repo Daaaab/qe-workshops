@@ -14,7 +14,9 @@ class ItemListViewModel(databaseFacade: AppDatabase, private val userSession: Us
 
     val items = ObservableArrayList<Item>()
 
-    private var subscription = databaseFacade.itemDao().getItems(userSession.user!!.id!!)
+    private var subscription = databaseFacade
+        .itemDao()
+        .getItems(userSession.user!!.id!!)
         .observeOn(Schedulers.io())
         .subscribeOn(Schedulers.io())
             .map { itemsList -> itemsList.map { item -> item.toAppModel() } }

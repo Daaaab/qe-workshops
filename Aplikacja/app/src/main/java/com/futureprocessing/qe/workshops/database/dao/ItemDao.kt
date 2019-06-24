@@ -14,7 +14,7 @@ interface ItemDao {
     fun getItem(itemId: Int): Single<ItemEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(item: ItemEntity)
+    fun insert(item: ItemEntity): Long
 
     @Delete
     fun delete(item: ItemEntity)

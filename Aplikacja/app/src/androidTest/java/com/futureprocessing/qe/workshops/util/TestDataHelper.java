@@ -10,6 +10,7 @@ import com.futureprocessing.qe.workshops.model.User;
 import com.futureprocessing.qe.workshops.model.UserSession;
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
+import io.reactivex.functions.BiConsumer;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
@@ -26,7 +27,7 @@ public class TestDataHelper {
 
     public UserEntity loginUser(String username, String password, UserSession userSession) {
         UserEntity user = addUserToDatabase(username, password);
-        userSession.start(new User(username, password, 0));
+        userSession.start(new User(Objects.requireNonNull(user.getLogin()), Objects.requireNonNull(user.getPassword()), user.getId()));
         return user;
     }
 
@@ -56,20 +57,12 @@ public class TestDataHelper {
     public ItemEntity addItemToDatabase(String name, Category category, Priority priority, boolean isChecked, UserEntity user) {
         ItemEntity item = new ItemEntity(0, name, isChecked, category, priority, user.getId());
 
-        return Single.just(item)
-                .doOnSuccess(
-                        new Consumer<ItemEntity>() {
-                            @Override
-                            public void accept(ItemEntity item) throws Exception {
-                                databaseFacade.itemDao().insert(item);
-                            }
-                        }
-                )
+        return Single.just(databaseFacade.itemDao().insert(item))
                 .flatMap(
-                        new Function<ItemEntity, SingleSource<ItemEntity>>() {
+                        new Function<Long, SingleSource<ItemEntity>>() {
                             @Override
-                            public SingleSource<ItemEntity> apply(ItemEntity item) throws Exception {
-                                return databaseFacade.itemDao().getItem(item.getId());
+                            public SingleSource<ItemEntity> apply(Long id) throws Exception {
+                                return databaseFacade.itemDao().getItem(id.intValue());
                             }
                         }
                 )

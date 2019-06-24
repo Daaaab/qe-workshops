@@ -18,18 +18,20 @@ import com.futureprocessing.qe.workshops.R.id;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
+
 import static org.hamcrest.core.AllOf.allOf;
 
 @LargeTest
-public class Exercise1 {
+public class Exercise1{
 
     private TestDataHelper helper;
 
-    @Rule public ActivityTestRule<LoginActivity> activityTestRule = new ActivityTestRule<>(LoginActivity.class);
+    @Rule
+    public ActivityTestRule<LoginActivity> activityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Before
     public void setup(){
-        helper = new TestDataHelper(((MyApplication) activityTestRule.getActivity().getApplication()).getDb());
+        helper = new TestDataHelper(((MyApplication)activityTestRule.getActivity().getApplication()).getDb());
         helper.dropDatabase();
     }
 
