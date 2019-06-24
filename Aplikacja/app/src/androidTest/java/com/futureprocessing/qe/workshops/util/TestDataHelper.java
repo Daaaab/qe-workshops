@@ -1,5 +1,6 @@
 package com.futureprocessing.qe.workshops.util;
 
+import android.util.Log;
 import com.futureprocessing.qe.workshops.database.AppDatabase;
 import com.futureprocessing.qe.workshops.database.model.ItemEntity;
 import com.futureprocessing.qe.workshops.database.model.UserEntity;
@@ -77,5 +78,6 @@ public class TestDataHelper {
 
     public void dropDatabase() {
         databaseFacade.clearAllTables();
+        Log.d("DB_MSG", "Database cleared");
     }
 }
