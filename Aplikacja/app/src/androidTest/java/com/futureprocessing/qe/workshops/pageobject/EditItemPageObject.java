@@ -1,6 +1,5 @@
 package com.futureprocessing.qe.workshops.pageobject;
 
-
 import androidx.test.espresso.ViewInteraction;
 import com.futureprocessing.qe.workshops.R;
 import com.futureprocessing.qe.workshops.model.Category;
