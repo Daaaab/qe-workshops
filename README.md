@@ -6,7 +6,7 @@ This project contains samples how to write automated tests for Android applicati
 
 If you have any questions feel free to contact the authors:
 
-Janina Adamiec - janinam.mazur@gmail.com
+Dagmara Surma - dsurma@future-processing.com
 
 Piotr Szczęsny - pszczesny2@future-processing.com
 
