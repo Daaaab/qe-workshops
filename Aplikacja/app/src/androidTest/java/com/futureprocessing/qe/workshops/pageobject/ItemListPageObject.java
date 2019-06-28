@@ -1,8 +1,11 @@
 package com.futureprocessing.qe.workshops.pageobject;
 
 import android.view.View;
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.matcher.ViewMatchers;
 import com.futureprocessing.qe.workshops.R;
 import com.futureprocessing.qe.workshops.model.Category;
 import com.futureprocessing.qe.workshops.model.Priority;

@@ -2,6 +2,7 @@ package com.futureprocessing.qe.workshops.test;
 
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
@@ -49,6 +50,23 @@ public class Exercise1{
         Espresso.onView(
                 ViewMatchers.withId(id.registerButton))
                 .perform(ViewActions.click());
+
+        Espresso.onView(
+                ViewMatchers.withId(id.newUsernameEditText))
+        .check(ViewAssertions.matches(
+                ViewMatchers.isDisplayed()
+        ));
+
+        Espresso.closeSoftKeyboard();
+        Espresso.pressBack();
+
+        Espresso.onView(
+                ViewMatchers.withId(id.usernameEditText))
+                .perform(ViewActions.replaceText("TEST TEXT"));
+
+        Espresso.onView(ViewMatchers.withId(id.usernameEditText)).perform(ViewActions.replaceText("test"));
+
+
     }
 
     /* TODO TASK 2
